@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Text</title>
+    <style>
+        .app {
+            position: relative;
+        }
+        video {
+            width: 50%;
+        }
+        #my_canvas {
+            position: absolute;
+            top: 350px;
+            left: 130px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <video src="./video.mp4" controls="true"></video>
+        <canvas id="my_canvas" width="600" height="80"></canvas>
+    </div>
+    <input id="draw_text" value="텍스트를 입력해주세요">
+    <script>
+        
+        document.getElementById("draw_text").addEventListener("keyup", function() {
+            var canvas = document.getElementById("my_canvas");
+            var context = canvas.getContext("2d");
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            let text = document.getElementById("draw_text").value;
+
+            context.font = "30px Consolas";
+            context.fillText(text, 10, 50); // ("내용", x좌표, y좌표)
+        
+        });
+    </script>
+</body>
+</html>
